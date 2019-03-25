@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resources([
+    'clientes' => 'Clients\ClienteController',
+    'productos' => 'Sales\ProductoController'
+]);
+Route::resource('ventas', 'Sales\VentaController')->only(['index', 'show', 'create', 'store']);

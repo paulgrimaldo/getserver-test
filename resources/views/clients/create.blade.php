@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header ">
                         <h4 class="text-center">
-                            <span class="font-weight-bold">{{ __('aplication.clientes') }}</span>-{{ __('aplication.edicion') }}
+                            <span class="font-weight-bold">{{ __('aplication.clientes') }}</span>-{{ __('aplication.registro') }}
                         </h4>
                     </div>
 
@@ -17,9 +17,8 @@
                                 @include('commons.flash-message')
                             </div>
                         </div>
-                        <form action="{{route('clientes.update',$cliente->id)}}" method="post">
+                        <form action="{{route('clientes.store')}}" method="POST">
                             @csrf
-                            @method('PUT')
                             @include('clients.partials.form')
                         </form>
                     </div>

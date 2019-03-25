@@ -7,21 +7,18 @@
                 <div class="card">
                     <div class="card-header ">
                         <h4 class="text-center">
-                            <span class="font-weight-bold">{{ __('aplication.clientes') }}</span>-{{ __('aplication.edicion') }}
+                            <span class="font-weight-bold">{{ __('aplication.error') }}</span>
                         </h4>
                     </div>
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12">
-                                @include('commons.flash-message')
+                            <div class="col-12 text-danger font-weight-bold text-center ">
+                                <h3>
+                                    {{__('aplication.500')}}
+                                </h3>
                             </div>
                         </div>
-                        <form action="{{route('clientes.update',$cliente->id)}}" method="post">
-                            @csrf
-                            @method('PUT')
-                            @include('clients.partials.form')
-                        </form>
                     </div>
                 </div>
             </div>

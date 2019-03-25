@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Sucursal;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,4 +38,49 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+
+        $sucursales = Sucursal::all();
+        return view('auth.login', compact('sucursales'));
+    }
+
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'sucursal_id' => 'required|exists:sucursales,id'
+        ]);
+    }
+
+
+    /**
+     * The user has been authenticated.
+     * Guardar en session la sucursal seleccionada.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        session()->put('sucursal_id', $request->get('sucursal_id'));
+    }
+
+
 }

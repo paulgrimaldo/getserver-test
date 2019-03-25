@@ -8,8 +8,12 @@
 
 namespace App\Http\Requests;
 
-
-interface BaseRequest
+/**
+ *  La interfaz define los metodos comunes que tendran
+ *  Opcional, para no sobrecargar los Controller
+ *
+ */
+interface BaseRequestInterface
 {
-
+    public function store();
 }

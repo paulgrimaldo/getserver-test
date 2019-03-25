@@ -110,14 +110,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
+    | Unidad monetaria en la que se trabaja el proyecto
     |--------------------------------------------------------------------------
-    |
-    | The service providers listed here will be automatically loaded on the
-    | request to your application. Feel free to add your own services to
-    | this array to grant expanded functionality to your applications.
-    |
     */
+    'unidad_venta' => 'Bs.',
+    /*
+   |--------------------------------------------------------------------------
+   | Autoloaded Service Providers
+   |--------------------------------------------------------------------------
+   |
+   | The service providers listed here will be automatically loaded on the
+   | request to your application. Feel free to add your own services to
+   | this array to grant expanded functionality to your applications.
+   |
+   */
 
     'providers' => [
 
@@ -159,7 +165,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        //Extras
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -208,7 +215,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
